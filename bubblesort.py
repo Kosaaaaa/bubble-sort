@@ -52,7 +52,7 @@ def sortowaniePliku(nazwaPliku,nazwaPlikuWyjsciowego):
         e += 1
     print("Długość sortowania --- %s sekund ---" % czas)
     with open(nazwaPlikuWyjsciowego, 'w') as plikWyj:   #Zapisanie pliku z danymi wyjściowymi
-        plikWyj.writelines("%s" % liczba for liczba in d)
+        plikWyj.writelines("%s\n" % liczba for liczba in d)
 
     return d
 
@@ -94,7 +94,20 @@ def usuwanie(lista):            #Usuwanie z listy elementów powtarzających si�
         print(j)
         x+=1
     return lista
-def usuwaniePlik(nazwaPliku):
-    pass
-#sortowaniePliku('nieposortowane.txt','wyj.txt')
+def usuwaniePlik(nazwaPlikuWej,nazwaPlikuWyj):
+    with open(nazwaPlikuWej, 'r') as plik1:    #Otworzenie pliku
+        d = plik1.readlines()
+    d = list(dict.fromkeys(d))
+    x = 1
+
+    for j in d:
+        print(x, end='# ')
+        print(j)
+        x += 1
+    with open(nazwaPlikuWyj, 'w') as plik2:   #Stworzenie pliku bez duplikatów
+        plik2.writelines("%s" % liczba for liczba in d)
+    return d
+
 losowanieListyPlik(100)
+sortowaniePliku('nieposortowane.txt','posortowane.txt')
+usuwaniePlik('posortowane.txt','bezDuplikatow.txt')
