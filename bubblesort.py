@@ -28,8 +28,10 @@ def sortowanie(d):
 
     return d
 def sortowaniePliku(nazwaPliku,nazwaPlikuWyjsciowego):
-    with open(nazwaPliku, 'r') as plik1:
+    with open(nazwaPliku, 'r') as plik1:    #Otworzenie pliku
         d = plik1.readlines()
+    d = list(map(int,d))            #Konwersja z typu string do typu int
+
     start_time = time.time()        # Przypisanie czasu rozpoczęcia procesu sortowania
     n = len(d)                      # ilość elementów listy
 
@@ -65,11 +67,25 @@ def losowanieListy(elementy):   #Dodaje określoną liczbe liczb pseudolosowych 
         print(x, end='# ')
         print(j)
         x+=1
-                                #Stworzenie pliku niesportowane i wstawienie do każdej lini jednego elementu
+
 
     return d
 def losowanieListyPlik(elementy):
-    pass
+    # Dodaje określoną liczbe liczb pseudolosowych do listy
+    d = []  # Stworzenie pustej listy d
+    x = 1  # Zmienna pomocnicza do numerowania elementów wyświetlanych
+    for i in range(elementy):  # Dodanie  pseudolosowej liczby z zakresu od 1 do 100 do listy o indeksie i
+        d.insert(i, random.randint(1, 1000))
+    print('Przed sortowaniem')
+    print()
+    for j in d:  # Wyjście nieposortowanej listy z liczbami pseudolosowymi
+        print(x, end='# ')
+        print(j)
+        x += 1
+    with open('nieposortowane.txt', 'w') as plikNieposortowane:   #Stworzenie pliku niesportowane i wstawienie do każdej lini jednego elementu
+        plikNieposortowane.writelines("%s\n" % liczba for liczba in d)
+
+    return d
 def usuwanie(lista):            #Usuwanie z listy elementów powtarzających się
     lista = list(dict.fromkeys(lista))
     x = 1
@@ -78,5 +94,7 @@ def usuwanie(lista):            #Usuwanie z listy elementów powtarzających si�
         print(j)
         x+=1
     return lista
-
-sortowaniePliku('nieposortowane.txt','xyz.txt')
+def usuwaniePlik(nazwaPliku):
+    pass
+#sortowaniePliku('nieposortowane.txt','wyj.txt')
+losowanieListyPlik(100)
