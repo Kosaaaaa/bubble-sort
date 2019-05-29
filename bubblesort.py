@@ -1,6 +1,8 @@
+#Oskar Kosobucki
+#Schemat blokowy autorstwa mgr Jerzego Wałaszka
 import random
 import time
-                                #Sortowanie bąbelkowe
+								#Sortowanie bąbelkowe
                                 #Sortowanie polegające na porównywaniu każdego elementu z jego sąsiadem
 def sortowanie(d):
 
