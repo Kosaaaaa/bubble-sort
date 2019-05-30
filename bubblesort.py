@@ -14,9 +14,7 @@ def sortowanie(d):
     for j in range(n-1):
         for i in range(n-1):
             if d[i]> d[i+1]:    #Porównanie elementu z jego 'następnym' sąsiadem
-                temp = d[i]     #Przypisanie elementu i do zmiennej 'tymczasowej'
-                d[i] = d[i+1]   #Przypiasnie do elementu i wartości jego sąsiada (i+1)
-                d[i+1] = temp   #Przypisanie do elementu sąsiadującego (i+1) wartości ze zmiennej tymczasowej
+                d[i], d[i+1] = d[i+1], d[i]   #Przypisanie do elementu sąsiadującego (i+1) wartości ze zmiennej o indeksie i
     czas = (time.time() - start_time)#Odjęcie czasu aktualnego od czasu rozpoczęcia wynikiem jest długość działania kodu
     print('Po sortowaniu')
     print()
